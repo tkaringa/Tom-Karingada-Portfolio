@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Karingada's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Orbitron:wght@500;700&family=Pacifico&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body class="theme-base">
+    <div class="scanlines"></div>
+    <div class="flicker"></div>
+    
+    <div id="master-timeline-container" class="hidden">
+        <div class="timeline-svg-container">
+            <svg viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <!-- Branches -->
+                <path class="timeline-branch orange-branch" d="M 100 50 Q 80 70 50 85" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 200 50 Q 150 20 100 15" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 300 50 Q 260 80 220 90" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 450 50 Q 400 20 350 10" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 550 50 Q 520 80 470 95" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 650 50 Q 600 15 550 10" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 750 50 Q 720 90 680 95" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 850 50 Q 800 20 750 15" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path class="timeline-branch orange-branch" d="M 950 50 Q 920 80 880 90" fill="none" stroke-width="3" stroke-linecap="round" />
+                <path id="branch-path" class="timeline-branch anomaly-branch" d="M 500 50 Q 520 50 475 90" fill="none" stroke-width="4" stroke-dasharray="1000" stroke-dashoffset="1000" stroke-linecap="round" />
+                
+                <!-- Master White Line -->
+                <path class="master-timeline-line" d="M 0 55 Q 100 48, 200 52 T 400 50 T 600 53 T 800 49 T 1000 55" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div class="timeline-nodes">
+            <div class="node-group" style="left: 10%;">
+                <div class="timeline-node" data-theme="theme-deco"></div>
+                <div class="node-label">1920</div>
+            </div>
+            <div class="node-group" style="left: 35%;">
+                <div class="timeline-node" data-theme="theme-atomic"></div>
+                <div class="node-label">1950</div>
+            </div>
+            <div class="node-group" style="left: 60%;">
+                <div class="timeline-node" data-theme="theme-1977"></div>
+                <div class="node-label">1977</div>
+            </div>
+            <div class="node-group" style="left: 85%;">
+                <div class="timeline-node" data-theme="theme-y2k"></div>
+                <div class="node-label">2000</div>
+            </div>
+            <div class="node-group anomaly-node" style="left: 47.5%; top: 40px;">
+                <div class="timeline-node active" data-theme="theme-base"></div>
+                <div class="node-label">ORIGIN</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="boot-screen" class="screen-overlay">
+        <div id="boot-text"></div>
+        <div class="cursor">_</div>
+        <button id="skip-boot" class="tactile-btn small" style="position: absolute; bottom: 30px; right: 30px; border-color: var(--brand-accent); color: var(--screen-text); z-index: 100;">SKIP BOOT [ESC]</button>
+    </div>
+
+    <div id="main-interface" class="hidden">
+        <div class="monitor-bezel">
+            <header class="top-bar">
+                <div class="logo">
+                    <span>ARCHIVE DESK 42</span>
+                    <h1>TOM D. KARINGADA</h1>
+                </div>
+                <div class="hardware-controls">
+                    <label class="tactile-toggle">
+                        <input type="checkbox" id="crt-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">CRT FX</span>
+                </div>
+                <div class="clock-widget" id="clock">00:00:00</div>
+            </header>
+            
+            <div id="status-bar" class="status-bar">> SYSTEM IDLE. WAITING FOR INPUT.</div>
+
+            <div class="dashboard">
+                <nav class="sidebar">
+                    <button class="tactile-btn nav-btn active" data-target="about">ABOUT ME</button>
+                    <button class="tactile-btn nav-btn" data-target="projects">PROJECTS</button>
+                    <button class="tactile-btn nav-btn" data-target="gallery">GALLERY</button>
+                    <button class="tactile-btn nav-btn" data-target="resume">WORK HISTORY</button>
+                    <button class="tactile-btn nav-btn" data-target="research">PERSONAL RESEARCH</button>
+                    <button class="tactile-btn nav-btn alert-btn" data-target="contact">SEND MESSAGE</button>
+                    
+                    <div style="flex-grow: 1; min-height: 20px;"></div>
+                    
+                    <a href="resume.pdf" target="_blank" class="tactile-btn standard-btn" style="text-align: center; text-decoration: none; display: block; margin-bottom: 10px;">STANDARD RESUME (PDF)</a>
+                    <button class="tactile-btn danger-btn" id="prune-btn">PRUNE PAGE</button>
+                </nav>
+
+                <main class="content-area">
+                    <section id="about" class="content-section active">
+                        <h2 class="section-title">ABOUT ME:</h2>
+                        <div class="file-card">
+                            <div class="profile-pic-placeholder">
+                                <span>[IMAGE REDACTED]</span>
+                            </div>
+                            <div class="data-fields">
+                                <p><span class="label">STATUS:</span> GRAD STUDENT</p>
+                                <p><span class="label">SPECIALTY:</span> ARTIFICIAL INTELLIGENCE, CYBERSECURITY, LINGUISTICS</p>
+                                <p><span class="label">OVERVIEW:</span> Currently working full-time as a cybersecurity analyst at UL Solutions, and studying part-time as a "Masters in Computer Science" student at the University of Illinois. I work in Cybersecurity, study Artificial Intelligence, and my passion projects are all about Linguistics</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="projects" class="content-section hidden">
+                        <h2 class="section-title">PROJECTS</h2>
+                        <div class="grid-layout">
+                            <div class="project-folder">
+                                <h3>THIRAYUKA</h3>
+                                <p>Malayalam Information Retrieval & Text Classification System using BM25 and DistilBERT.</p>
+                                <a href="https://github.com/tkaringa/Thirayuka" class="tactile-btn small">ACCESS FILE</a>
+                            </div>
+                            <div class="project-folder">
+                                <h3>QUANTUM LINGUIST</h3>
+                                <p>A toy project designed to study Quantum Computing and entangling sentiment with Malayalam sentence semantics.</p>
+                                <a href="https://github.com/tkaringa/Quantum-Linguist" class="tactile-btn small">ACCESS FILE</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="gallery" class="content-section hidden relative">
+                        <h2 class="section-title">PROJECT GALLERY</h2>
+                        <p class="section-desc">// DRAG AND DROP PHYSICAL FILES TO INSPECT //</p>
+                        <div class="polaroid-container" id="polaroid-desk">
+                            <div class="polaroid" data-title="MALAYALAM WATCH" data-desc="I built a watch from scratch after noticing there were no watches that used Malayalam numerals. I designed custom metal stickers in order to create the dial, then ordered all the parts for the watch, and assembled it.">
+                                <div class="polaroid-img"> <img src=".\assets\images\watch.jpeg" alt="Malayalam Watch Design"></div>
+                                <div class="polaroid-caption">CUSTOM WATCH</div>
+                            </div>
+                            <div class="polaroid" data-title="PRUNED BRANCH 890-C" data-desc="When I was touring Fort Cochi in Kerala, I noticed a collection of stamps that seemed to have really unique designs. Once I got home, I immediately got to work creating a vector version of the stamp for future use (I've created two stamps and put them on a shirt).">
+                                <div class="polaroid-img"> <img src=".\assets\images\stamp.jpg" alt="Malayalam Stamp Design"></div>
+                                <div class="polaroid-caption">RESTORED STAMPS</div>
+                            </div>
+                        </div>
+
+                        <!-- Polaroid Full View Inspector -->
+                        <div id="polaroid-inspector" class="hidden">
+                            <div class="inspector-header">
+                                <h3 id="inspector-title">DOCUMENT</h3>
+                                <button id="close-inspector" class="tactile-btn small danger-btn">CLOSE FILE [X]</button>
+                            </div>
+                            <div class="inspector-content">
+                                <div class="inspector-image-pane" id="inspector-image-container"></div>
+                                <div class="inspector-details-pane">
+                                    <h4>FILE DESCRIPTION:</h4>
+                                    <p id="inspector-desc"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="resume" class="content-section hidden relative">
+                        <h2 class="section-title">WORK HISTORY</h2>
+                        <div class="document-view">
+                            <h3>EXPERIENCE LOG</h3>
+                            <ul class="datalog">
+                                <li>
+                                    <span class="date">JUNE 2024 - PRESENT</span>
+                                    <strong>TS SECURITY ANALYST</strong>
+                                    <span class="date">MAY 2024 - AUGUST 2024</span>
+                                    <strong>SOFTWARE ENGINEERING & CYBERSECURITY INTERN </strong>
+                                    <p>Developed Python-based internal tools to automate cybersecurity and product compliance workflows.</p>
+                                    <p> </p>
+                                    <p>Reverse engineered software and firmware to validate adherence to global security and IoT safety standards.</p>
+                                    <p> </p>
+                                    <p>Conducted penetration testing of IoT devices, identifying network and firmware-level vulnerabilities.</p>
+                                    <p> </p>
+                                    <p>Partnered with engineering and compliance teams to integrate security findings into development lifecycles.</p>
+                                    <p> </p>
+                                    <p>Authored technical documentation and training materials for internal engineering teams.</p>
+                                </li>
+                                <li>
+                                    <span class="date">MAY 2023 - JULY 2023</span>
+                                    <strong>IT INTERN </strong>
+                                    <p>Modified and deployed software to increase the productivity of employees at the company by 8%.</p>
+                                    <p> </p>
+                                    <p>Aided in preventing various cybersecurity attacks on the company network.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="research" class="content-section hidden">
+                        <h2 class="section-title">PERSONAL RESEARCH</h2>
+                        <div class="document-view">
+                            <div class="project-folder">
+                                <h3>MORPHOLOGICALLY-INFORMED TOKENIZATION FOR MALAYALAM</h3>
+                                <p>This is a project that provides a novel approach to tokenizing Malayalam using a dictionary of pre-made tokens in order to create targeted splits in large corpus of Malayalam text.</p>
+                                <a href="https://github.com/tkaringa/Morphologically-Informed-Tokenization-for-Malayalam" class="tactile-btn small">ACCESS FILE</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="contact" class="content-section hidden">
+                        <h2 class="section-title">GET IN CONTACT:</h2>
+                        <form class="retro-form" id="contact-form">
+                            <div class="form-group">
+                                <label>SENDER NAME:</label>
+                                <input type="text" id="sender-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>SENDER EMAIL:</label>
+                                <input type="email" id="sender-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>MESSAGE:</label>
+                                <textarea id="sender-message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="tactile-btn alert-btn submit-btn">SEND TRANSMISSION</button>
+                        </form>
+                        
+                        <div id="transmission-status" class="hidden">
+                            <h3 style="color: var(--brand-accent); font-size: 24px; margin-bottom: 10px;">TRANSMITTING...</h3>
+                            <div id="progress-bar" style="font-size: 20px; margin-bottom: 20px; letter-spacing: 2px; color: var(--screen-text);">[....................]</div>
+                            <p id="transmission-result" class="hidden" style="color: #6bcc6b; font-size: 18px; margin-bottom: 30px;">[SUCCESS] MESSAGE COMMITTED TO ARCHIVE RECORD.</p>
+                            <button id="reset-comms-btn" class="tactile-btn small hidden">OPEN NEW TRANSMISSION LINE</button>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

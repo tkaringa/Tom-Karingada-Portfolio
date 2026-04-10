@@ -1,0 +1,400 @@
+/* BASE ROOT & BASE DEFAULT (Overrides) */
+:root {
+    --heading-font: 'VT323', monospace;
+    --body-font: 'Space Mono', monospace;
+    --btn-border-radius: 0px;
+    --monitor-border-radius: 12px;
+    --crt-display: block;
+    --form-bg: transparent;
+    --nav-uppercase: uppercase;
+}
+
+body {
+    transition: background-color 0.5s, color 0.5s, filter 0.3s, opacity 0.3s;
+}
+
+#main-interface, .content-area, .tactile-btn, .clock-widget, .status-bar, .file-card, .project-folder, .polaroid-container, .polaroid, .inspector-image-pane, .inspector-details-pane, .hardware-controls, .retro-form input, .retro-form textarea {
+    transition: all 0.5s ease;
+}
+
+/* --- THEME 1: 1920s ART DECO --- */
+body.theme-deco {
+    --bg-color: #0a0a0a;
+    --monitor-bezel: #161616;
+    --monitor-inner: #0f0f0f;
+    --brand-accent: #d4af37; /* Gold */
+    --brand-text: #e8e2d2; /* Cream */
+    --screen-text: #e8e2d2;
+    --screen-glow: rgba(212, 175, 55, 0.4);
+    --btn-shadow: #d4af37;
+    --btn-dark: #b89125;
+    
+    --heading-font: 'Cinzel', serif;
+    --body-font: 'Cinzel', serif;
+    --btn-border-radius: 0px;
+    --monitor-border-radius: 0px;
+    --crt-display: none;
+    --nav-uppercase: uppercase;
+}
+body.theme-deco #main-interface {
+    border: 12px double var(--brand-accent);
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    background-image: linear-gradient(30deg, #161616 12%, transparent 12.5%, transparent 87%, #161616 87.5%, #161616), linear-gradient(150deg, #161616 12%, transparent 12.5%, transparent 87%, #161616 87.5%, #161616), linear-gradient(30deg, #161616 12%, transparent 12.5%, transparent 87%, #161616 87.5%, #161616), linear-gradient(150deg, #161616 12%, transparent 12.5%, transparent 87%, #161616 87.5%, #161616), linear-gradient(60deg, #1b1b1b 25%, transparent 25.5%, transparent 75%, #1b1b1b 75%, #1b1b1b), linear-gradient(60deg, #1b1b1b 25%, transparent 25.5%, transparent 75%, #1b1b1b 75%, #1b1b1b);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+body.theme-deco .tactile-btn {
+    border: 2px solid var(--brand-accent);
+    background-color: var(--monitor-bezel);
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
+    color: var(--brand-accent);
+    position: relative;
+}
+body.theme-deco .tactile-btn::before {
+    content: ''; position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.5); pointer-events: none;
+}
+body.theme-deco .tactile-btn:hover { background-color: #222; }
+body.theme-deco .tactile-btn.active { 
+    background-color: var(--brand-accent);
+    color: #000;
+}
+body.theme-deco .content-area {
+    border: 6px double var(--brand-accent);
+    background: #0d0d0d;
+    box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.05);
+}
+body.theme-deco .file-card, body.theme-deco .project-folder {
+    border: 1px solid var(--brand-accent);
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+body.theme-deco .clock-widget { border: 2px solid var(--brand-accent); box-shadow: none; background: #000; }
+body.theme-deco .polaroid { background-color: #f1ebd9; border-radius: 0; border: 4px double #d4af37; padding: 10px; }
+body.theme-deco .polaroid-img img, body.theme-deco .inspector-image-pane img { filter: sepia(0.8) contrast(1.2); }
+body.theme-deco .status-bar, body.theme-deco .hardware-controls { display: none; }
+
+/* --- THEME 2: 1950s ATOMIC AGE --- */
+body.theme-atomic {
+    --bg-color: #f5f2e8;
+    --monitor-bezel: #60c5ba; /* Atomic Teal */
+    --monitor-inner: #fffdf5;
+    --brand-accent: #ff6f59; /* Coral Red */
+    --brand-text: #333333;
+    --screen-text: #2c2c2c;
+    --screen-glow: rgba(0,0,0,0);
+    --btn-shadow: #469c93;
+    --btn-dark: #ff6f59;
+    
+    --heading-font: 'Pacifico', cursive;
+    --body-font: sans-serif;
+    --btn-border-radius: 50px;
+    --monitor-border-radius: 60px;
+    --crt-display: none;
+    --nav-uppercase: none;
+}
+body.theme-atomic #main-interface {
+    border: none;
+    background-image: radial-gradient(#d1f0ec 20%, transparent 20%), radial-gradient(#d1f0ec 20%, transparent 20%);
+    background-position: 0 0, 20px 20px;
+    background-size: 40px 40px;
+    box-shadow: 15px 15px 0px rgba(70, 156, 147, 0.4);
+    padding: 30px;
+}
+body.theme-atomic .top-bar { align-items: flex-end; border-color: transparent; }
+body.theme-atomic .logo { transform: rotate(-3deg); padding-left: 10px; }
+body.theme-atomic .logo h1 { text-shadow: 2px 2px 0px #fff, 4px 4px 0px var(--btn-shadow); font-size: 42px; border-bottom: 4px solid var(--brand-accent); }
+body.theme-atomic .logo span { display: none; }
+body.theme-atomic .content-area {
+    border: 6px dashed var(--brand-accent);
+    border-radius: 40px;
+    background: #fffdf4;
+    box-shadow: none;
+}
+body.theme-atomic .tactile-btn {
+    border: none;
+    box-shadow: 0px 6px 0px var(--btn-shadow), inset 0px 5px 0px rgba(255,255,255,0.4);
+    color: white;
+    background-color: var(--brand-accent);
+    text-align: center;
+    border-radius: 50px;
+    text-transform: capitalize;
+    font-weight: 800;
+}
+body.theme-atomic .tactile-btn:active, body.theme-atomic .tactile-btn.active {
+    box-shadow: 0px 0px 0px var(--btn-shadow), inset 0px -5px 0px rgba(0,0,0,0.1);
+    transform: translateY(6px);
+    background-color: #d15642;
+    color: #fffdf4;
+}
+body.theme-atomic .clock-widget { border: none; font-size: 24px; color: var(--brand-text); background: transparent; font-weight: bold; }
+body.theme-atomic h2.section-title { border-bottom: none; text-align: center; text-shadow: 2px 2px 0px #ffb3a7; }
+body.theme-atomic .polaroid { border-radius: 12px; background: #fffdf4; border: 1px solid #ccc; box-shadow: 4px 4px 15px rgba(0,0,0,0.2); }
+body.theme-atomic .polaroid-img { border-radius: 8px 8px 0 0; }
+body.theme-atomic .polaroid-img img, body.theme-atomic .inspector-image-pane img { filter: saturate(1.4) contrast(1.1) brightness(1.05); }
+body.theme-atomic .status-bar, body.theme-atomic .hardware-controls { display: none; }
+body.theme-atomic .scanlines, body.theme-atomic .flicker { display: none !important; }
+
+/* --- THEME 3: 1977 RETRO TERMINAL --- */
+body.theme-1977 {
+    --bg-color: #031e11;
+    --monitor-bezel: #1a1a1a;
+    --monitor-inner: #072611;
+    --brand-accent: #33ff33; /* Phosphor Green */
+    --brand-text: #33ff33;
+    --screen-text: #33ff33;
+    --screen-glow: rgba(51, 255, 51, 0.4);
+    --btn-shadow: #116611;
+    --btn-dark: #228822;
+
+    --heading-font: 'VT323', monospace;
+    --body-font: 'VT323', monospace;
+    --btn-border-radius: 0px;
+    --monitor-border-radius: 12px;
+    --crt-display: block;
+    --nav-uppercase: uppercase;
+}
+body.theme-1977 #main-interface {
+    border: 20px solid #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #000;
+}
+body.theme-1977 * {
+    text-shadow: 0 0 5px rgba(51, 255, 51, 0.6), 0 0 10px rgba(51, 255, 51, 0.3);
+}
+body.theme-1977 .content-area {
+    border: 1px solid var(--brand-accent);
+    background: transparent;
+    box-shadow: inset 0 0 10px rgba(51, 255, 51, 0.2);
+    /* Add a deep vignette to the green screen */
+    background-image: radial-gradient(circle at center, transparent 40%, rgba(3, 30, 17, 0.9) 100%);
+}
+body.theme-1977 .tactile-btn {
+    border: 1px solid var(--brand-accent);
+    color: var(--brand-accent);
+    background: #000;
+    box-shadow: none;
+}
+body.theme-1977 .tactile-btn:hover { background: #003300; }
+body.theme-1977 .tactile-btn.active {
+    background: var(--brand-accent);
+    color: #000;
+    text-shadow: none;
+}
+body.theme-1977 .polaroid { background: #000; border: 1px solid #33ff33; box-shadow: none; }
+body.theme-1977 .gallery-desc { color: #33ff33; }
+body.theme-1977 .polaroid-img img, body.theme-1977 .inspector-image-pane img {
+    /* Instantly converts all real images to authentic 1977 Phosphor Green CRT look */
+    filter: grayscale(100%) sepia(100%) hue-rotate(80deg) saturate(4) brightness(0.9) contrast(1.5) drop-shadow(0 0 5px rgba(51, 255, 51, 0.5));
+}
+body.theme-1977 #master-timeline-container { border-color: #1a1a1a; background-color: #041009; background-image: none; box-shadow: none;}
+body.theme-1977 .timeline-node { border-color: #33ff33; background: #000; box-shadow: 0 0 8px #33ff33; }
+body.theme-1977 .master-timeline-line { stroke: #e6ffe6; filter: drop-shadow(0 0 5px #33ff33); }
+body.theme-1977 .timeline-branch { stroke: #33ff33; filter: drop-shadow(0 0 5px #33ff33); }
+body.theme-1977 .node-label { color: #33ff33; }
+
+/* --- THEME 4: EARLY 2000s WEB 1.0 (Y2K) --- */
+body.theme-y2k {
+    --bg-color: #3b8a82; /* Windows 95 Desktop Background */
+    --monitor-bezel: #d4d0c8;
+    --monitor-inner: #ffffff;
+    --brand-accent: #000080; /* Navy Blue */
+    --brand-text: #000000;
+    --screen-text: #000000;
+    --screen-glow: rgba(0,0,0,0);
+    --btn-shadow: #808080;
+    --btn-dark: #c0c0c0;
+    
+    --heading-font: 'Verdana', sans-serif;
+    --body-font: 'Tahoma', sans-serif;
+    --btn-border-radius: 2px;
+    --monitor-border-radius: 0px;
+    --crt-display: none;
+    --nav-uppercase: none;
+}
+body.theme-y2k #main-interface {
+    border: none;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    padding: 2px;
+    background-color: #d4d0c8;
+}
+body.theme-y2k .top-bar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 4px 10px;
+    margin: 0;
+    border-bottom: none;
+    align-items: center;
+}
+body.theme-y2k .logo { flex: 1; }
+body.theme-y2k .logo span, body.theme-y2k .logo h1 { color: white; display: inline-block; margin-right: 10px; }
+body.theme-y2k .logo h1 { font-size: 18px; font-weight: bold; margin: 0; }
+body.theme-y2k .content-area {
+    border: 2px solid;
+    border-color: #808080 #fff #fff #808080;
+    background: #fff;
+    box-shadow: none;
+    padding: 15px;
+    margin: 4px;
+}
+body.theme-y2k .tactile-btn {
+    background: #d4d0c8;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff;
+    box-shadow: none;
+    color: black;
+    font-size: 13px;
+    padding: 5px 10px;
+}
+body.theme-y2k .tactile-btn:active, body.theme-y2k .tactile-btn.active {
+    border-color: #808080 #fff #fff #808080;
+    transform: none;
+    background: #e0e0e0;
+}
+body.theme-y2k .section-title { font-size: 20px; border-bottom: 1px dotted #ccc; margin-bottom: 10px; }
+body.theme-y2k .polaroid { background: #d4d0c8; border: 2px solid; border-color: #fff #808080 #808080 #fff; padding: 4px; }
+body.theme-y2k .polaroid-img { border: 2px solid; border-color: #808080 #fff #fff #808080; }
+body.theme-y2k .status-bar, body.theme-y2k .hardware-controls { display: none; }
+body.theme-y2k .clock-widget {
+    background: transparent;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-family: var(--body-font);
+    font-size: 16px;
+    padding: 0;
+}
+body.theme-y2k .scanlines, body.theme-y2k .flicker { display: none !important; }
+
+/* Apply Font Variables globally */
+body .section-title, body .logo h1, body .inspector-details-pane h4, body .status-bar {
+    font-family: var(--heading-font);
+}
+body, body .tactile-btn, body .retro-form input, body .retro-form textarea, body .polaroid-caption {
+    font-family: var(--body-font);
+}
+
+/* ------------------------------------- */
+/* master timeline CONTAINER UI          */
+/* ------------------------------------- */
+#master-timeline-container {
+    position: fixed;
+    top: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 1100px;
+    height: 100px;
+    z-index: 500;
+    pointer-events: none;
+    background-color: #0b0000;
+    border-top: 4px solid #8e0000;
+    border-bottom: 4px solid #8e0000;
+    box-shadow: 0px 0px 20px rgba(142, 0, 0, 0.4);
+    background-image: radial-gradient(#300 1px, transparent 1px);
+    background-size: 5px 5px;
+    border-radius: 12px;
+}
+#master-timeline-container::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: 0; right: 0; bottom: -10px;
+    border-top: 2px solid #f60;
+    border-bottom: 2px solid #f60;
+    pointer-events: none;
+    opacity: 0.4;
+    border-radius: 12px;
+}
+
+#master-timeline-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0.6;
+    border-radius: 12px;
+    animation: flickerAnim 0.15s infinite;
+}
+
+.timeline-svg-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+.timeline-svg-container svg {
+    width: 100%; height: 100%;
+}
+
+.master-timeline-line {
+    filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 15px rgba(255,255,255,0.7));
+    animation: pulse-line 3s infinite alternate;
+}
+
+@keyframes pulse-line {
+    0% { filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 15px rgba(255,255,255,0.5)); stroke-width: 4px; }
+    100% { filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 25px rgba(255,255,255,1)); stroke-width: 6px; }
+}
+
+.timeline-branch {
+    stroke: #ff6600;
+    filter: drop-shadow(0 0 5px #ff3300);
+}
+
+.anomaly-branch {
+    transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+.timeline-nodes {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+.node-group {
+    position: absolute;
+    top: 50px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: auto;
+    cursor: pointer;
+}
+.timeline-node {
+    width: 14px;
+    height: 14px;
+    background: #000;
+    border: 3px solid #ff6600;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff3300;
+    transition: all 0.3s;
+}
+.timeline-node:hover, .timeline-node.active {
+    background: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 20px #fff, 0 0 40px #ff6600;
+    transform: scale(1.5);
+}
+.node-label {
+    margin-top: 10px;
+    color: #ff6600;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #ff3300;
+    opacity: 0.8;
+}
+.node-group:hover .node-label, .timeline-node.active + .node-label {
+    opacity: 1;
+    color: #fff;
+    text-shadow: 0 0 10px #ff6600;
+}
+
+/* Adjust main monitor position down slightly so timeline has room */
+body { align-items: flex-end; padding-bottom: 2vh; }
+#main-interface { height: 80vh; }
+@media (max-width: 900px) {
+    #master-timeline-container { top: 1vh; width: 95vw; }
+    body { padding-top: 120px; padding-bottom: 15px; align-items: flex-start; }
+    #main-interface { height: auto !important; min-height: 80vh; }
+}
